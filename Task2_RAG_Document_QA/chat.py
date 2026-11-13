@@ -89,24 +89,24 @@ QUESTION:
 ANSWER:
 """
 
+   
     # Generate answer
     response = llm.invoke(prompt)
 
     print("\nANSWER:")
     answer = response.content
 
-if isinstance(answer, list):
-    answer = "\n".join(
-        item.get("text", "")
-        for item in answer
-        if isinstance(item, dict) and item.get("type") == "text"
-    )
+    if isinstance(answer, list):
+        answer = "\n".join(
+            item.get("text", "")
+            for item in answer
+            if isinstance(item, dict) and item.get("type") == "text"
+        )
 
-print(answer)
+    print(answer)
+
     print("\nSOURCE PAGES:")
     print(pages)
-
-
 def main():
 
     print("\nAI DOCUMENT QUESTION ANSWERING SYSTEM")
